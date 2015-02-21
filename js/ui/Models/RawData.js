@@ -5,6 +5,8 @@
 angular.module('Models')
 
 .factory('RawData', [function() {
+	console.logo('RawData');
+	
 	var RawData = function() {
 		var creditCardNumer,
 			accoutNumer,

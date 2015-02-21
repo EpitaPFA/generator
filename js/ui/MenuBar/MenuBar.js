@@ -30,8 +30,6 @@ angular.module("MenuBarModule", [])
 				
 				$scope.menus.push(menu)
 			}
-			console.log($scope.menus);
-			
 			
            $scope.select = function(menu)
 		   {

@@ -8,7 +8,8 @@
   "version": "0.0.0",
   "dependencies": {
     "file": "^0.2.2",
-    "mkdirp": "^0.5.0"
+    "mkdirp": "^0.5.0",
+    "creditcard-generator": "0.0.7"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -1,4 +1,4 @@
-angular.module("CenterViewModule", ['MenuBarModule'])
+angular.module("CenterViewModule", ['MenuBarModule', 'GeneratorService'])
 
 .directive("centerView", [function() {
     return {
@@ -11,8 +11,8 @@ angular.module("CenterViewModule", ['MenuBarModule'])
     }
 }])
 
-.controller("CenterViewController", ['$scope', 'EVENTS', 'MENUS',
-                                function($scope, EVENTS, MENUS) {
+.controller("CenterViewController", ['$scope', 'EVENTS', 'MENUS', 'GeneratorService',
+                                function($scope, EVENTS, MENUS, GeneratorService) {
     //TODO : Externalize into another controller ? Set views ? :)
     $scope.contents = [false, true];
     $scope.$on(EVENTS.MENU.CHANGED, function(event, menu) {
