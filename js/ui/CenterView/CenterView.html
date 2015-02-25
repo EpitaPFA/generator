@@ -1,12 +1,11 @@
 <div>
     <menu-bar></menu-bar>
+    <start-view class="centerContainer"></start-view>
     <div class="topBar">
 		<file-status-bar class="topLeft"></file-status-bar>
 		<output-chooser class="topRight"></output-chooser>
     </div>
     
-    <file-viewer ng-hide="contents[0]"></file-viewer>
-    <rules-viewer ng-hide="contents[0]" class="rightContainer"></rules-viewer>
     
      <!--need a server file viewer, howto ? :)--> 
     <div class="centerContainer" ng-hide="contents[1]">

@@ -1,4 +1,4 @@
-angular.module("CenterViewModule", ['MenuBarModule', 'GeneratorService'])
+angular.module("CenterViewModule", ['MenuBarModule', 'GeneratorService', 'StartView'])
 
 .directive("centerView", [function() {
     return {
