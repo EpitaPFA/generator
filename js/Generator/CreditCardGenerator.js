@@ -7,7 +7,6 @@ var CreditCardGenerator = function() {
     this.genCC = function(type, number) {
         var ccs = _generator.GenCC(type, number);
         _cli.info('Generated ' + number + ' ' + type + ' cards.');
-        _cli.debug(ccs);
         return ccs;
     }
 }
