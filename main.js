@@ -2,7 +2,7 @@
 
 var cli = require('cli').enable('status'),
     options = cli.parse({
-        iterations : ['i', 'Number of data to be generated', 'number']
+        iterations : ['i', 'Number of data to be generated']
     });
 
 cli.main(function(args, options) {
