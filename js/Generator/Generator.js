@@ -5,6 +5,7 @@ var Generator = function() {
     var _creditCardGenerator = require('./CreditCardGenerator');
     var _transaction = require('../Models/Transaction');
     var _progressPrinter = require('../Commons/ProgressPrinter');
+    var _accountNumberGenerator = require('./AccountNumberGenerator');
     
     this.gen = function(iteration) {
         var transactionList = [];

@@ -26,7 +26,6 @@ ProgressPrinter.prototype.print = function(currentIt) {
         this.percentStep = this.percentStep + 10;
     }
     
-    
 }
 
 module.exports = ProgressPrinter;
