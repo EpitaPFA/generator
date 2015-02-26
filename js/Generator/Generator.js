@@ -5,13 +5,14 @@ var Generator = function() {
     var _creditCardGenerator = require('./CreditCardGenerator');
     var _transaction = require('../Models/Transaction');
     var _progressPrinter = require('../Commons/ProgressPrinter');
-    var _accountNumberGenerator = require('./AccountNumberGenerator');
+	var _bankCodeGenerator = require('./BankCodeGenerator');
+	var _IBANGenerator = require('./IBANGenerator');
     
     this.gen = function(iteration) {
         var transactionList = [];
         var creditCards = _creditCardGenerator.genCC('VISA', iteration);
         var printer = new _progressPrinter("Generator", iteration);
-        
+        var bankCodes = _bankCodeGenerator.genBatch(40);
         for(var i = 0; i < iteration; i++) {
             var transaction = new _transaction(creditCards[i]);
             // _cli.debug('Iteration ' + i + ' ' + JSON.stringify(transaction));
