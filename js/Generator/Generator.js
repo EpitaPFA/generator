@@ -12,13 +12,13 @@ var Generator = function() {
         var transactionList = [];
         var creditCards = _creditCardGenerator.genCC('VISA', options.iterations);
         var printer = new _progressPrinter("Generator", options.iterations);
-        var ibans = _IBANGenerator.gen(options.bankNumber, options.accountNumber); 
         for(var i = 0; i < options.iterations; i++) {
             var transaction = new _transaction(creditCards[i]);
             // _cli.debug('Iteration ' + i + ' ' + JSON.stringify(transaction));
             transactionList.push(transaction);
             printer.print(i);
         }
+        var ibans = _IBANGenerator.gen(options.bankNumber, options.accountNumber); 
         return transactionList;
     }
 }

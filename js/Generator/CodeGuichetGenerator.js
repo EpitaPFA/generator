@@ -9,12 +9,10 @@ var CodeGuichetGenerator = function() {
 	}
 	
 	this.genBatch = function(iterations) {
-		_cli.info("Generating " + iterations + " guichet codes");
 		var guichets = [];
 		for(var i = 0; i < iterations; i++) {
-			guichets.push(iterations);
+			guichets.push(this.gen());
 		}
-		_cli.debug("Guichet codes " + JSON.stringify(guichets));
 		return guichets;
 	}
 }

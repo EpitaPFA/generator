@@ -3,7 +3,7 @@
 var _cli = require('cli');
 var bankCodes = require('../../resources/bankCodes.json');
 var _progressPrinter = require('../Commons/ProgressPrinter');
-
+var name = "BankCodenerator";
 var BankCodenerator = function() {
 	
 	this.gen = function() {
@@ -24,7 +24,8 @@ var BankCodenerator = function() {
 			}
 			printer.print(i);
 		}
-		_cli.info(bankCodes.length + " bank codes generated");
+		_cli.info(name + " generated " + (bankCodes.length + " bank codes"));
+		return bankCodes;
 	}
 	
 	this.validate = function(bankCode) {

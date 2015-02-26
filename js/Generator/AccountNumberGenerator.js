@@ -3,6 +3,7 @@
 var _cli = require('cli');
 var _progressPrinter = require('../Commons/ProgressPrinter');
 
+var name = "AccountNumberGenerator";
 var AccountNumberGenerator = function() {
     
     this.gen = function() {
@@ -27,7 +28,7 @@ var AccountNumberGenerator = function() {
 				i += 1;
 			}
 		}
-		_cli.info(accounts.length + " account numbers generated");
+		_cli.info(name + " generated " + (accounts.length + " accounts"));
 		return accounts;
 	}
 	
@@ -37,7 +38,7 @@ var AccountNumberGenerator = function() {
 			_cli.debug("Account number " + accountNumber + " is valid");
 		}
 		else {
-			_cli.error("Account number " + accountNumber + " is invalid");
+			_cli.debug("Account number " + accountNumber + " is invalid");
 		}
 		return isValide;
 	}
