@@ -45,7 +45,7 @@ var IBANGenerator = function() {
 			var rib = this.genRIB(bank.code, codeGuichet, accountNumber);
 			var bban = bank.code + codeGuichet + accountNumber;
 			
-			var iban = _France + key ;
+			var iban = _France + key + bban + key;
 			progress.print(i);
 			ibans.push(iban);
 		}
