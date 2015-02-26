@@ -19,6 +19,8 @@ var Generator = function() {
         for(var i = 0; i < options.iterations; i++) {
 			var iban = ibans[Math.floor(Math.random() * ibans.length)];
 			var type = _transactionTypes[Math.floor(Math.random() * _transactionTypes.length)];
+			
+			var ecommerce = Math.floor(Math.random() * 1);
             var transaction = new _transaction(creditCards[i], iban, type, _currency);
 			
 			
