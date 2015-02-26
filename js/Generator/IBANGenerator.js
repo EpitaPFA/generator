@@ -3,6 +3,8 @@
 var _cli = require('cli');
 var _iban = require('iban');
 var _countries = require('../../resources/countries.json');
+var _bankCodeGenerator = require('./BankCodeGenerator');
+var _accountNumberGenerator = require('./AccountNumberGenerator');
 
 var IBANGenerator = function() {
 	
@@ -14,8 +16,11 @@ var IBANGenerator = function() {
         }
     }
 	
-	this.gen = function(countyCode, bankCode, accountNumber) {
-		
+	this.gen = function(bankNumber, accountNumber) {
+		var ibans = [];
+		var bankCodes = _bankCodeGenerator.genBatch(bankNumber);
+		var accounts = _accountNumberGenerator.genBatch(accountNumber);
+		return ibans;
 	}
 	
 	this.validateIban = function(iban) {
