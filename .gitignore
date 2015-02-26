@@ -4,3 +4,4 @@ js/resources/
 /*.html
 nw*
 *.dll
+output/

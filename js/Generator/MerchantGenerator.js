@@ -16,11 +16,11 @@ var MerchantGenerator = function() {
 
 	
 	this.genCode = function() {
-		return Math.floor(Math.random() * 5 + 10000);
+		return Math.floor(Math.random() * 99999 + 10000);
 	}
 	
 	this.genName = function() {
-		return Math.floor(Math.random() * 5 + 10000);;
+		return Math.floor(Math.random() * 99999 + 10000);;
 	}
 	
 	this.getCity = function(cities) {

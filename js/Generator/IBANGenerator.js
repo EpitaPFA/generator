@@ -28,14 +28,14 @@ var IBANGenerator = function() {
 			var guichetsNb = Math.floor((Math.random() * 4) + 1);
 			var codeGuichets = _codeGuichetsGenerator.genBatch(guichetsNb);
 			var bank = {
-				code : bankCodes[i],
+				code : bankCodes[i].code,
 				guichets : codeGuichets
 			}
 			banks.push(bank);
 		}
 		var progress = new _progressPrinter("IBANGenerator", accountNumber);
 		for (var i = 0; i < accountNumber; i ++) {
-			var key = Math.floor(Math.random * 96 + 2);
+			var key = Math.floor(Math.random() * 96 + 2);
 			if (key < 10) {
 				key = "0" + key;
 			}
@@ -44,10 +44,10 @@ var IBANGenerator = function() {
 			var accountCode  = accounts[Math.floor(Math.random() * accounts.length)];
 			var rib = this.genRIB(bank.code, codeGuichet, accountNumber);
 			var bban = bank.code + codeGuichet + accountNumber;
-			
-			var iban = _France + key + bban + key;
+			var iban = _France.code + key + bban + key;
 			progress.print(i);
 			ibans.push(iban);
+			//_cli.info(iban);
 		}
 		_cli.info(name + " generated " + banks.length + " ibans");
 		return ibans;
