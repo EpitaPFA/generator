@@ -16,7 +16,6 @@ Option  | Full Name | Type | Description
 -m | --merchants | Number | Number of merchants to generate
 -d | --days | Number | Number of days covering the irations
 -k | --no-color | Number | Omit color from output
--k | --no-color | Number | Omit color from output
  | --debug | | Show debug information
--k | --help | | Display help and usage detail
+-h | --help | | Display help and usage detail
 
