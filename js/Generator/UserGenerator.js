@@ -11,10 +11,10 @@ var UserGenerator = function() {
         return user;
     }
     
-    this.genBatch(ibans, creditCards) {
+    this.genBatch = function(ibans, creditCards) {
         var users = [];
         for (var i = 0; i < ibans.length; i++) {
-            users.push(self.gen(iban[i], creditCards[i]));
+            users.push(self.gen(ibans[i], creditCards[i]));
         }
         return users;
     }

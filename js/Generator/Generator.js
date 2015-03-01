@@ -1,24 +1,21 @@
 'use strict';
 
 var Generator = function() {
-    var self = this;
-    var _cli = require('cli');
-    var _creditCardGenerator = require('./CreditCardGenerator');
-    var _transaction = require('../Models/Transaction');
-    var _progressPrinter = require('../Commons/ProgressPrinter');
-	var _IBANGenerator = require('./IBANGenerator');
-	var _merchantGenerator = require('./MerchantGenerator');
-    var _userGenerator = require('./UserGenerator');
+    var self = this,
+        _cli = require('cli'),
+        _creditCardGenerator = require('./CreditCardGenerator'),
+        _transaction = require('../Models/Transaction'),
+        _progressPrinter = require('../Commons/ProgressPrinter'),
+        _IBANGenerator = require('./IBANGenerator'),
+        _merchantGenerator = require('./MerchantGenerator'),
+        _userGenerator = require('./UserGenerator'),
+        ArrayUtils = require('../Commons/ArrayUtils');
 	
-    var _transactionTypes = require('../../resources/transactionTypes.json');
-	var _cities = require('../../resources/cities.json');
-	var _currency = "euro";
+    var _transactionTypes = require('../../resources/transactionTypes.json'),
+        _cities = require('../../resources/cities.json'),
+        _currency = "euro";
 	
 	var _dayInMiliseconds = 86400000;
-    
-    this.random = function(array) {
-        return array[Math.floor(Math.random(array.length))];
-    }
 	
     this.gen = function(options) {
         
@@ -42,10 +39,10 @@ var Generator = function() {
 			day.setTime(day.getTime() + i * _dayInMiliseconds);
 			for (var j = 0; j < transactionMoy; j++) {
 				//_cli.info("lol");
-				var type = self.random(_transactionTypes);
-				var merchant = self.random(merchants);
-                var creditCard = self.random(creditCards);
-                var user = self.random(users);
+				var type = ArrayUtils.getRandom(_transactionTypes);
+				var merchant = ArrayUtils.getRandom(merchants);
+                var creditCard = ArrayUtils.getRandom(creditCards);
+                var user = ArrayUtils.getRandom(users);
                 
 				var cityNumber = options.cities;
 				
@@ -63,10 +60,10 @@ var Generator = function() {
 												   type,
 												   _currency,
 												   merchant.code,
-												   merchant.namee,
+												   merchant.name,
 												   merchant.city,
 												   merchant.country.code,
-												   aquierer,
+												   merchant.ref,
 												   day.getTime());
 
 				//_cli.info('Iteration ' + i + ' ' + JSON.stringify(transaction));

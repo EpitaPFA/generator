@@ -8,6 +8,7 @@ var _accountNumberGenerator = require('./AccountNumberGenerator');
 var _codeGuichetsGenerator = require('./CodeGuichetGenerator');
 var _progressPrinter = require('../Commons/ProgressPrinter');
 var _ibanKeys = require('../../resources/ibanKeys.json');
+var ArrayUtils = require('../Commons/ArrayUtils');
 
 var name = "IBANGenerator";
 var IBANGenerator = function() {
@@ -40,9 +41,9 @@ var IBANGenerator = function() {
 			if (key < 10) {
 				key = "0" + key;
 			}
-			var bank = banks[Math.floor(Math.random() * banks.length)];
-			var codeGuichet = bank.guichets[Math.floor(Math.random() * bank.guichets.length)];
-			var accountCode  = accounts[Math.floor(Math.random() * accounts.length)];
+			var bank = ArrayUtils.getRandom(banks);
+			var codeGuichet = ArrayUtils.getRandom(bank.guichets);
+			var accountCode  = ArrayUtils.getRandom(accounts);
             
 			var rib = this.genRIB(bank.code, codeGuichet, accountCode);
 			var bban = bank.code + codeGuichet + accountNumber;

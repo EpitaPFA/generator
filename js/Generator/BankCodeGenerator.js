@@ -3,11 +3,13 @@
 var _cli = require('cli');
 var bankCodes = require('../../resources/bankCodes.json');
 var _progressPrinter = require('../Commons/ProgressPrinter');
+var ArrayUtils = require('../Commons/ArrayUtils');
+
 var name = "BankCodenerator";
 var BankCodenerator = function() {
 	
 	this.gen = function() {
-		var bankCode = bankCodes[Math.floor((Math.random() * bankCodes.length))];
+		var bankCode = ArrayUtils.getRandom(bankCodes);
 		if (this.validate(bankCode)) {
 			return bankCode;
 		}
