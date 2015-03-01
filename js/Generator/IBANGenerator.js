@@ -7,6 +7,7 @@ var _bankCodeGenerator = require('./BankCodeGenerator');
 var _accountNumberGenerator = require('./AccountNumberGenerator');
 var _codeGuichetsGenerator = require('./CodeGuichetGenerator');
 var _progressPrinter = require('../Commons/ProgressPrinter');
+var _ibanKeys = require('../../resources/ibanKeys.json');
 
 var name = "IBANGenerator";
 var IBANGenerator = function() {
@@ -42,28 +43,38 @@ var IBANGenerator = function() {
 			var bank = banks[Math.floor(Math.random() * banks.length)];
 			var codeGuichet = bank.guichets[Math.floor(Math.random() * bank.guichets.length)];
 			var accountCode  = accounts[Math.floor(Math.random() * accounts.length)];
-			var rib = this.genRIB(bank.code, codeGuichet, accountNumber);
+            
+			var rib = this.genRIB(bank.code, codeGuichet, accountCode);
 			var bban = bank.code + codeGuichet + accountNumber;
-			var iban = _France.code + key + bban + key;
+            
+            var valid = _iban.isValidBBAN(_France.code, rib);
+   
+			var iban = _France.code.concat(key).concat(bban).concat(key);
+            this.numberize(iban);
 			progress.print(i);
 			ibans.push(iban);
-			//_cli.info(iban);
 		}
 		_cli.info(name + " generated " + banks.length + " ibans");
 		return ibans;
 	}
+    
+    this.numberize = function(code) {
+        for (var i = 0; i < 2 ; i++) {
+            var c = code.charAt(i);
+            if (/[A-Z]/.test(c)) {
+                
+                c = _ibanKeys[c];
+                code = code.substr(0, i) + c + code.substr(i+1);
+            }
+        }
+        return code;
+    }
 	
 	this.genRIB = function(bankCode, codeGuichet, accountNumber) {
 		
-		var bban = 97 - ((89 * bankCode + 15 * codeGuichet + 3* accountNumber) % 97);
-		/*var valid = _iban.isValidBBAN(_France.code, bban);
-		if (valid) {
-			_cli.debug("BBAN " + bban + " is valid");
-		}
-		else {
-			_cli.error("BBAN " + bban + " is invalid");
-		}*/
-		return bban;
+		var key = 97 - ((89 * bankCode + 15 * codeGuichet + 3* accountNumber) % 97);
+        var rib = "".concat(bankCode).concat(codeGuichet).concat(accountNumber).concat(key);
+		return rib;
 	}
 	
 	this.validateIban = function(iban) {

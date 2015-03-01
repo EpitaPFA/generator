@@ -7,7 +7,7 @@ var name = "AccountNumberGenerator";
 var AccountNumberGenerator = function() {
     
     this.gen = function() {
-		var accountNumber = Math.floor((Math.random() * 9999999999) + 10000);
+		var accountNumber = Math.floor((Math.random() * 99999999999) + 100000);
 		if (this.validate(accountNumber)) {
        		return accountNumber;
 		}
