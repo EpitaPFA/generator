@@ -3,7 +3,8 @@
 #### Usage  
 - npm install  
 - main.js [OPTIONS] [ARGS]
-- Ex : ./main.js -i 4000 -b 120 -a 140 -c 2000 -m 25000 -d 3  
+- Ex : ./main.js -i 4000 -b 120 -a 140 -c 2000 -m 25000 -d 3 
+- ./main.js -i 40000 -b 1 -a 2000000 -c 13266 -m 400000 -d 30 
 
 #### Options  
 
